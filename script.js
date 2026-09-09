@@ -4,6 +4,8 @@
     const tabs = document.querySelectorAll('.tab');
     const panels = document.querySelectorAll('.panel');
     const brand = document.querySelector('.brand');
+    const copyDiscordBtn = document.getElementById('copy-discord-btn');
+
     if (!tabs.length || !panels.length) return;
 
     const tabOrder = Array.from(tabs).map(t => t.dataset.tab);
@@ -51,6 +53,31 @@
       brand.addEventListener('click', function(e) {
         e.preventDefault();
         activateTab('accueil');
+      });
+    }
+
+    // Copie en un clic du pseudo Discord perso
+    if (copyDiscordBtn) {
+      copyDiscordBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText('.lerow.').then(() => {
+          const copyText = copyDiscordBtn.querySelector('.copy-text');
+          const copiedText = copyDiscordBtn.querySelector('.copied-text');
+          copyDiscordBtn.classList.add('copied');
+          if (copyText && copiedText) {
+            copyText.style.display = 'none';
+            copiedText.style.display = 'inline';
+          }
+          setTimeout(() => {
+            copyDiscordBtn.classList.remove('copied');
+            if (copyText && copiedText) {
+              copyText.style.display = 'inline';
+              copiedText.style.display = 'none';
+            }
+          }, 2000);
+        }).catch(() => {
+          // Fallback si l'API Clipboard est bloquée
+          alert('Pseudo Discord : .lerow.');
+        });
       });
     }
 

@@ -21,6 +21,8 @@
   --youtube-glow: rgba(255, 0, 0, 0.45);
   --tiktok: #ffffff;
   --tiktok-glow: rgba(255, 255, 255, 0.4);
+  --discord: #5865f2;
+  --discord-glow: rgba(88, 101, 242, 0.4);
 }
 
 * {
@@ -29,10 +31,14 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 html {
   scroll-behavior: smooth;
   background: #000000;
-  height: 100%;
 }
 
 /* Flexbox pour garantir que le footer reste toujours collé tout en bas */
@@ -301,7 +307,7 @@ main {
   max-width: 68ch;
 }
 
-/* Hero Section en 2 Colonnes pour occuper l'espace */
+/* Hero Section en 2 Colonnes */
 .hero-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr;
@@ -330,7 +336,7 @@ main {
   color: var(--text-mute);
   font-size: 1.08rem;
   line-height: 1.75;
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   max-width: 56ch;
   text-wrap: pretty;
 }
@@ -339,6 +345,92 @@ main {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+}
+
+/* Encart Discord Perso */
+.discord-contact-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #0d0d0d;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 14px 20px;
+  margin-top: 26px;
+  max-width: 560px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.discord-contact-banner:hover {
+  border-color: rgba(88, 101, 242, 0.5);
+  box-shadow: 0 4px 20px -4px rgba(88, 101, 242, 0.25);
+  transform: translateY(-1px);
+}
+
+.discord-contact-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.discord-badge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(88, 101, 242, 0.14);
+  border: 1px solid rgba(88, 101, 242, 0.3);
+  color: var(--discord);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.discord-contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.discord-contact-label {
+  font-size: 0.82rem;
+  color: var(--text-mute);
+  line-height: 1.3;
+}
+
+.discord-username {
+  font-family: 'Space Grotesk', monospace, sans-serif;
+  font-size: 1.05rem;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.discord-copy-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.discord-copy-btn:hover {
+  background: var(--discord);
+  border-color: var(--discord);
+  color: #ffffff;
+  box-shadow: 0 0 14px var(--discord-glow);
+}
+
+.discord-copy-btn.copied {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
 }
 
 /* Carte Visuelle Streamer à Droite */
@@ -398,16 +490,15 @@ main {
   color: var(--white);
 }
 
-.hero-avatar-badge {
-  font-size: 0.72rem;
+.hero-avatar-discord {
+  font-size: 0.76rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: var(--discord);
+  background: rgba(88, 101, 242, 0.12);
+  border: 1px solid rgba(88, 101, 242, 0.35);
   padding: 3px 10px;
   border-radius: 999px;
+  letter-spacing: 0.02em;
 }
 
 /* Boutons d'Action */
@@ -722,21 +813,21 @@ main {
   color: #ffffff;
 }
 
-/* Carte Discord -> Bleu */
+/* Carte Discord -> Violet/Bleu officiel Discord */
 .card-discord:hover {
-  border-color: var(--blue);
-  box-shadow: 0 10px 28px -6px var(--blue-glow);
+  border-color: var(--discord);
+  box-shadow: 0 10px 28px -6px var(--discord-glow);
 }
 
 .card-discord:hover .link-icon-box {
-  background: rgba(59, 130, 246, 0.18);
-  border-color: var(--blue);
-  color: var(--blue);
+  background: rgba(88, 101, 242, 0.2);
+  border-color: var(--discord);
+  color: var(--discord);
 }
 
 .card-discord:hover .link-name,
 .card-discord:hover .link-arrow {
-  color: #60a5fa;
+  color: #7289da;
 }
 
 /* Placeholder Events */
@@ -855,28 +946,17 @@ a:focus-visible, button:focus-visible {
   .hero-actions .btn {
     justify-content: center;
   }
+  .discord-contact-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .discord-copy-btn {
+    text-align: center;
+  }
   .link-grid {
     grid-template-columns: 1fr;
   }
   .stat-row {
     grid-template-columns: 1fr;
   }
-}
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-footer {
-  margin-top: auto;
 }
