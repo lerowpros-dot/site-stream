@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Stream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark"></span>
+    <span class="brand-name">TON PSEUDO</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="accueil" role="tab" aria-selected="true">Accueil</button>
+    <button class="tab" data-tab="planning" role="tab" aria-selected="false">Planning</button>
+    <button class="tab" data-tab="reseaux" role="tab" aria-selected="false">Réseaux</button>
+    <button class="tab" data-tab="events" role="tab" aria-selected="false">Events</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ACCUEIL -->
+  <section id="accueil" class="panel active">
+    <div class="hero">
+      <div class="live-badge">
+        <span class="dot"></span> ACTUELLEMENT HORS LIGNE
+      </div>
+      <h1>Bienvenue sur mon repaire.</h1>
+      <p class="hero-sub">Je stream sur Twitch et YouTube — jeux, discussions, et tout ce qui me passe par la tête. Retrouve mes horaires, mes réseaux et mes prochains events juste à côté.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary" target="_blank" rel="noopener">Voir sur Twitch</a>
+        <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">Voir sur YouTube</a>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <span class="stat-num">3×</span>
+        <span class="stat-label">Streams par semaine</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">20h</span>
+        <span class="stat-label">Heure de démarrage habituelle</span>
+      </div>
+      <div class="stat-block">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Plateformes — Twitch &amp; YouTube</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANNING -->
+  <section id="planning" class="panel">
+    <h2>Planning des streams</h2>
+    <p class="section-intro">Les horaires ci-dessous sont donnés à titre indicatif — je peux annoncer des sessions surprises sur Discord.</p>
+
+    <div class="schedule-list">
+      <div class="schedule-row">
+        <span class="schedule-day">Lundi</span>
+        <span class="schedule-time">20h00</span>
+        <span class="schedule-tag">Jeux du moment</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">Mercredi</span>
+        <span class="schedule-time">20h00</span>
+        <span class="schedule-tag">Communauté</span>
+      </div>
+      <div class="schedule-row">
+        <span class="schedule-day">Vendredi</span>
+        <span class="schedule-time">21h00</span>
+        <span class="schedule-tag">Soirée spéciale</span>
+      </div>
+      <div class="schedule-row schedule-row-muted">
+        <span class="schedule-day">Weekend</span>
+        <span class="schedule-time">Variable</span>
+        <span class="schedule-tag">Annoncé sur Discord</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEAUX -->
+  <section id="reseaux" class="panel">
+    <h2>Réseaux</h2>
+    <p class="section-intro">Retrouve-moi partout où je traîne.</p>
+
+    <div class="link-grid">
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">Twitch</span>
+        <span class="link-desc">Lives principaux</span>
+      </a>
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">YouTube</span>
+        <span class="link-desc">VOD &amp; clips</span>
+      </a>
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">Discord</span>
+        <span class="link-desc">La communauté</span>
+      </a>
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">X / Twitter</span>
+        <span class="link-desc">Annonces rapides</span>
+      </a>
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">Instagram</span>
+        <span class="link-desc">Coulisses</span>
+      </a>
+      <a href="#" class="link-card" target="_blank" rel="noopener">
+        <span class="link-name">TikTok</span>
+        <span class="link-desc">Clips courts</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="panel">
+    <h2>Events</h2>
+    <p class="section-intro">Aucun événement prévu pour le moment — reviens bientôt.</p>
+
+    <div class="event-placeholder">
+      <span class="event-placeholder-mark">＋</span>
+      <p>Les prochains events (tournois, collabs, sessions spéciales) apparaîtront ici.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 — Fait avec du café et trop peu de sommeil.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
