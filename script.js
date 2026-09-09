@@ -1,40 +1,68 @@
-// Gestion des onglets : un clic affiche le panneau correspondant
-// et cache les autres, avec un swipe fluide dans la bonne direction
-// (vers la droite si on avance dans les onglets, vers la gauche si on recule).
+// Gestion des onglets fluide, robuste et accessible
+(function() {
+  function initTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    const brand = document.querySelector('.brand');
+    if (!tabs.length || !panels.length) return;
 
-const tabs = document.querySelectorAll('.tab');
-const panels = document.querySelectorAll('.panel');
-const tabOrder = Array.from(tabs).map(t => t.dataset.tab);
+    const tabOrder = Array.from(tabs).map(t => t.dataset.tab);
 
-function activateTab(target) {
-  const currentTab = document.querySelector('.tab.active');
-  const fromIndex = tabOrder.indexOf(currentTab ? currentTab.dataset.tab : target);
-  const toIndex = tabOrder.indexOf(target);
-  const direction = toIndex >= fromIndex ? 'enter-right' : 'enter-left';
+    function activateTab(target) {
+      if (!tabOrder.includes(target)) return;
 
-  tabs.forEach(t => {
-    const isTarget = t.dataset.tab === target;
-    t.classList.toggle('active', isTarget);
-    t.setAttribute('aria-selected', isTarget ? 'true' : 'false');
-  });
+      const currentTab = document.querySelector('.tab.active');
+      const fromIndex = currentTab ? tabOrder.indexOf(currentTab.dataset.tab) : 0;
+      const toIndex = tabOrder.indexOf(target);
+      const direction = toIndex >= fromIndex ? 'enter-right' : 'enter-left';
 
-  panels.forEach(panel => {
-    panel.classList.remove('enter-right', 'enter-left');
-    const isTarget = panel.id === target;
-    panel.classList.toggle('active', isTarget);
-    if (isTarget) panel.classList.add(direction);
-  });
+      tabs.forEach(t => {
+        const isTarget = (t.dataset.tab === target);
+        t.classList.toggle('active', isTarget);
+        t.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+      });
 
-  history.replaceState(null, '', '#' + target);
-}
+      panels.forEach(panel => {
+        panel.classList.remove('enter-right', 'enter-left');
+        const isTarget = (panel.id === target);
+        panel.classList.toggle('active', isTarget);
+        if (isTarget) {
+          panel.classList.add(direction);
+        }
+      });
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => activateTab(tab.dataset.tab));
-});
+      try {
+        if (window.location.protocol !== 'file:') {
+          history.replaceState(null, '', '#' + target);
+        } else {
+          window.location.hash = target;
+        }
+      } catch (e) {}
+    }
 
-// Si quelqu'un ouvre le site avec un lien du type tonsite.vercel.app#events,
-// on ouvre directement le bon onglet.
-window.addEventListener('DOMContentLoaded', () => {
-  const hash = window.location.hash.replace('#', '');
-  if (hash && tabOrder.includes(hash)) activateTab(hash);
-});
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateTab(this.dataset.tab);
+      });
+    });
+
+    if (brand) {
+      brand.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateTab('accueil');
+      });
+    }
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash && tabOrder.includes(hash)) {
+      activateTab(hash);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
+})();
