@@ -794,6 +794,21 @@ main {
   letter-spacing: 0.01em;
 }
 
+/* Jours sans stream */
+.schedule-row-off {
+  border-style: dashed;
+  opacity: 0.6;
+}
+
+.schedule-row-off:hover {
+  opacity: 0.85;
+}
+
+.schedule-tag-off {
+  color: var(--text-mute);
+  background: transparent;
+}
+
 /* Grille Réseaux Sociaux (4 colonnes larges) */
 .link-grid {
   display: grid;
@@ -992,6 +1007,38 @@ main {
   animation: france-flag-text 2.1s ease-in-out infinite;
 }
 
+
+.card-france .link-card-watermark {
+  bottom: -45px;
+  right: -18px;
+}
+
+.projet-layout {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.projet-link-grid {
+  flex: 0 0 280px;
+  display: block;
+}
+
+.projet-desc {
+  flex: 1;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .projet-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .projet-link-grid {
+    flex: none;
+  }
+}
 
 /* Placeholder Events */
 .event-placeholder {
