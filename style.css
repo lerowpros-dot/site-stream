@@ -992,9 +992,6 @@ main {
   animation: france-flag-text 2.1s ease-in-out infinite;
 }
 
-.card-france:hover .link-card-watermark-sword {
-  color: var(--white);
-}
 
 /* Placeholder Events */
 .event-placeholder {
